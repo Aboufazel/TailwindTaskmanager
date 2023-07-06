@@ -3,7 +3,6 @@ import './App.css';
 
 import {Provider} from "react-redux";
 import store from "./Redux-toolkit/store";
-import Counter from "./components/counter/counter";
 import TaskList from "./components/taskList/taskList";
 
 function App() {

@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
+
+import {Provider} from "react-redux";
+import store from "./Redux-toolkit/store";
+import Counter from "./components/counter/counter";
+import TaskList from "./components/taskList/taskList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="flex flex-col">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Provider store={store}>
+        <div className={"grid grid-cols-12 gap-3 p-3"}>
+            <TaskList/>
+            <TaskList/>
+            <TaskList/>
+            <TaskList/>
+        </div>
+      </Provider>
   );
 }
 

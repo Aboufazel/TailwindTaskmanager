@@ -10,9 +10,6 @@ function App() {
       <Provider store={store}>
         <div className={"grid grid-cols-12 gap-3 p-3"}>
             <TaskList/>
-            <TaskList/>
-            <TaskList/>
-            <TaskList/>
         </div>
       </Provider>
   );

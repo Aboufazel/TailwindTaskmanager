@@ -16,6 +16,11 @@ const TaskList = () => {
     }
 
 
+
+
+    const manageEdit = (title)=>{
+        setValue({title: title});
+    }
     const manageSubmit = (e) =>{
         e.preventDefault();
         dispatch(addTaskAction({id:Math.random() * 1000 ,title:value.title}));
@@ -44,12 +49,14 @@ const TaskList = () => {
            <div className={"flex flex-col gap-3 py-5 h-[500px] overflow-y-scroll"}>
                {
                    taskList.map(item => (
-                       <div key={item.id} className={"bg-blue-50 h-32 p-2 rounded-lg shadow-neutral-200 shadow-sm"}>
+                       <div key={item.id} className={"flex flex-col gap-3 bg-blue-50 h-32 p-2 rounded-lg shadow-neutral-200 shadow-sm"}>
                            {item.title}
 
-                           <button onClick={()=>manageRemove(item.id)} className={"text-red-500"}>
+                           <button onClick={()=>manageRemove(item.id)} className={"bg-red-500 text-white"}>
                                delete Task
                            </button>
+
+                           <button onClick={()=>manageEdit(item.title)} className={"bg-amber-600 text-white"}>edit task tile</button>
                        </div>
                    ))
                }

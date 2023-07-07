@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {addTaskAction} from "../../Redux-toolkit/slice/categorySlice";
+import {addTaskAction , deleteTaskAction , editTaskAction} from "../../Redux-toolkit/slice/categorySlice";
 
 const TaskList = () => {
 
@@ -18,16 +18,18 @@ const TaskList = () => {
 
     const manageSubmit = (e) =>{
         e.preventDefault();
-        dispatch(addTaskAction({id:2 ,title:value.title}));
+        dispatch(addTaskAction({id:Math.random() * 1000 ,title:value.title}));
         setValue({title: ""});
     }
 
-    console.log(taskList);
+    const manageRemove = (id)=>{
+        dispatch(deleteTaskAction(id));
+    }
 
 
     return(
-        <div className={"col-span-3 gap-3 flex flex-col p-2 h-[85vh] bg-neutral-50"}>
-            <h1 className={"font-black text-3xl mb-5"}>
+        <div className={"col-span-3 gap-3 flex flex-col p-2 h-[85vh] backdrop-blur-sm shadow-md rounded-2xl bg-white/30"}>
+            <h1 className={"font-black text-gray-600 text-xl mb-5"}>
                 To Start
             </h1>
 
@@ -39,13 +41,19 @@ const TaskList = () => {
                 </button>
             </form>
 
-            {
-                taskList.map(item => (
-                    <div key={item.id} className={"bg-white p-2 rounded-lg shadow-neutral-200 shadow-sm"}>
-                        {item.title}
-                    </div>
-                ))
-            }
+           <div className={"flex flex-col gap-3 py-5 h-[500px] overflow-y-scroll"}>
+               {
+                   taskList.map(item => (
+                       <div key={item.id} className={"bg-blue-50 h-32 p-2 rounded-lg shadow-neutral-200 shadow-sm"}>
+                           {item.title}
+
+                           <button onClick={()=>manageRemove(item.id)} className={"text-red-500"}>
+                               delete Task
+                           </button>
+                       </div>
+                   ))
+               }
+           </div>
         </div>
     )
 }

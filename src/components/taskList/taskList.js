@@ -1,10 +1,26 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {addTaskAction , deleteTaskAction , editTaskAction} from "../../Redux-toolkit/slice/categorySlice";
-
+import {alertAction} from "../../Redux-toolkit/slice/toastSlice"
 const TaskList = () => {
 
 
+    const onSuccess = () => {
+        dispatch(
+            alertAction({
+                message: "تسک با موفقیت افزوده شد 🤗",
+                type: "success"
+            })
+        );
+    };
+    const onError = () => {
+        dispatch(
+            alertAction({
+                message: "تسک مورد نظر حذف شد 😩",
+                type: "error"
+            })
+        );
+    };
 
     const [value , setValue] = useState({title:""})
 
@@ -25,10 +41,12 @@ const TaskList = () => {
         e.preventDefault();
         dispatch(addTaskAction({id:Math.random() * 1000 ,title:value.title}));
         setValue({title: ""});
+        onSuccess();
     }
 
     const manageRemove = (id)=>{
         dispatch(deleteTaskAction(id));
+        onError();
     }
 
 

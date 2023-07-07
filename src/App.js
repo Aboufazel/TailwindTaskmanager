@@ -6,7 +6,10 @@ import TaskList from "./components/taskList/taskList";
 import {PersistGate} from "redux-persist/integration/react";
 import DoingList from "./components/doingList/doingList";
 
+
 function App() {
+
+
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>

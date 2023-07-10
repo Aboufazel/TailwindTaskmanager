@@ -5,21 +5,24 @@ import {createSlice} from "@reduxjs/toolkit";
 
 
 
-const initialState = {message:"" , type:""}
+const initialState = []
 
-
-const createAlert = (state , action) =>{
-
-    alert(action.payload.message)
-    // state.message = action.payload.message;
-    // state.type = action.payload.type;
-}
+// const createAlert = (state , action) =>{
+//     console.log(`state-alerts ${state.alerts}`)
+//
+//     state.alerts.push({
+//         message: action.payload.message,
+//         type: action.payload.type
+//     });
+// }
 
 const toastSlice =  createSlice({
     name:"toastMange",
     initialState,
     reducers: {
-        createAlert
+        createAlert: (state, action) => {
+            state={message:action.payload.message};
+        }
     }
 })
 

@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {addTaskAction , deleteTaskAction , editTaskAction} from "../../Redux-toolkit/slice/categorySlice";
 import {alertAction} from "../../Redux-toolkit/slice/toastSlice"
+import Alert from "../alert/Alert";
 const TaskList = () => {
 
 
@@ -52,6 +53,8 @@ const TaskList = () => {
 
     return(
         <div className={"col-span-3 gap-3 flex flex-col p-2 h-[85vh] backdrop-blur-sm shadow-md rounded-2xl bg-white/30"}>
+            <Alert/>
+
             <h1 className={"font-black text-gray-600 text-xl mb-5"}>
                 To Start
             </h1>
